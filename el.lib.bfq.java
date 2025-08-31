@@ -47,14 +47,14 @@ local CoreGui = cloneref(game:GetService('CoreGui'))
 local Debris = cloneref(game:GetService('Debris'))
 
 local mouse = Players.LocalPlayer:GetMouse()
-local old_Noxware = CoreGui:FindFirstChild('Noxware')
+local old_snowcc = CoreGui:FindFirstChild('snowcc')
 
-if old_Noxware then
-    Debris:AddItem(old_Noxware, 0)
+if old_snowcc then
+    Debris:AddItem(old_snowcc, 0)
 end
 
-if not isfolder("Noxware") then
-    makefolder("Noxware")
+if not isfolder("snowcc") then
+    makefolder("snowcc")
 end
 
 local Connections = setmetatable({
@@ -269,7 +269,7 @@ local Config = setmetatable({
     save = function(self: any, file_name: any, config: any)
         local success_save, result = pcall(function()
             local flags = HttpService:JSONEncode(config)
-            writefile('Noxware/'..file_name..'.json', flags)
+            writefile('snowcc/'..file_name..'.json', flags)
         end)
     
         if not success_save then
@@ -278,13 +278,13 @@ local Config = setmetatable({
     end,
     load = function(self: any, file_name: any, config: any)
         local success_load, result = pcall(function()
-            if not isfile('Noxware/'..file_name..'.json') then
+            if not isfile('snowcc/'..file_name..'.json') then
                 self:save(file_name, config)
         
                 return
             end
         
-            local flags = readfile('Noxware/'..file_name..'.json')
+            local flags = readfile('snowcc/'..file_name..'.json')
         
             if not flags then
                 self:save(file_name, config)
@@ -391,7 +391,7 @@ function Library.SendNotification(settings)
     UIStroke.Parent = InnerFrame
 
     local Title = Instance.new("TextLabel")
-    Title.Text = settings.title or "Noxware Notification"
+    Title.Text = settings.title or "snowcc Notification"
     Title.TextColor3 = Color3.fromRGB(220, 20, 60)
     Title.FontFace = Font.new('rbxasset://fonts/families/GothamSSm.json', Enum.FontWeight.Bold, Enum.FontStyle.Normal)
     Title.TextSize = 14
@@ -405,7 +405,7 @@ function Library.SendNotification(settings)
     Title.Parent = InnerFrame
 
     local Body = Instance.new("TextLabel")
-    Body.Text = settings.text or "This is a notification from Noxware."
+    Body.Text = settings.text or "This is a notification from snowcc."
     Body.TextColor3 = Color3.fromRGB(200, 200, 200)
     Body.FontFace = Font.new('rbxasset://fonts/families/GothamSSm.json', Enum.FontWeight.Regular, Enum.FontStyle.Normal)
     Body.TextSize = 12
@@ -487,17 +487,17 @@ function Library:remove_table_value(__table: any, table_value: string)
 end
 
 function Library:create_ui()
-    local old_Noxware = CoreGui:FindFirstChild('Noxware')
+    local old_snowcc = CoreGui:FindFirstChild('snowcc')
 
-    if old_Noxware then
-        Debris:AddItem(old_Noxware, 0)
+    if old_snowcc then
+        Debris:AddItem(old_snowcc, 0)
     end
 
-    local Noxware = Instance.new('ScreenGui')
-    Noxware.ResetOnSpawn = false
-    Noxware.Name = 'Noxware'
-    Noxware.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-    Noxware.Parent = CoreGui
+    local snowcc = Instance.new('ScreenGui')
+    snowcc.ResetOnSpawn = false
+    snowcc.Name = 'snowcc'
+    snowcc.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+    snowcc.Parent = CoreGui
     
     local Container = Instance.new('Frame')
     Container.ClipsDescendants = true
@@ -510,7 +510,7 @@ function Library:create_ui()
     Container.Size = UDim2.new(0, 0, 0, 0)
     Container.Active = true
     Container.BorderSizePixel = 0
-    Container.Parent = Noxware
+    Container.Parent = snowcc
     
     local UICorner = Instance.new('UICorner')
     UICorner.CornerRadius = UDim.new(0, 12)
@@ -556,7 +556,7 @@ function Library:create_ui()
     ClientName.FontFace = Font.new('rbxasset://fonts/families/GothamSSm.json', Enum.FontWeight.Bold, Enum.FontStyle.Normal)
     ClientName.TextColor3 = Color3.fromRGB(220, 20, 60)
     ClientName.TextTransparency = 0
-    ClientName.Text = 'Noxware'
+    ClientName.Text = 'snowcc'
     ClientName.Name = 'ClientName'
     ClientName.Size = UDim2.new(0, 80, 0, 16)
     ClientName.AnchorPoint = Vector2.new(0, 0.5)
@@ -635,7 +635,7 @@ function Library:create_ui()
     local UIScale = Instance.new('UIScale')
     UIScale.Parent = Container    
     
-    self._ui = Noxware
+    self._ui = snowcc
 
     local function on_drag(input: InputObject, process: boolean)
         if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then 
@@ -692,7 +692,7 @@ function Library:create_ui()
     end;
 
     function self:UIVisiblity()
-        Noxware.Enabled = not Noxware.Enabled;
+        snowcc.Enabled = not snowcc.Enabled;
     end;
 
     function self:change_visiblity(state: boolean)
@@ -710,7 +710,7 @@ function Library:create_ui()
     function self:load()
         local content = {}
     
-        for _, object in Noxware:GetDescendants() do
+        for _, object in snowcc:GetDescendants() do
             if not object:IsA('ImageLabel') then
                 continue
             end
@@ -1025,7 +1025,7 @@ function Library:create_ui()
                 ModuleName.Text = settings.title or "Module"
             else
                 ModuleName.RichText = true
-                ModuleName.Text = settings.richtext or "<font color='rgb(220,20,60)'>Noxware</font> Module"
+                ModuleName.Text = settings.richtext or "<font color='rgb(220,20,60)'>snowcc</font> Module"
             end;
             ModuleName.Name = 'ModuleName'
             ModuleName.Size = UDim2.new(0, 205, 0, 15)
@@ -1377,7 +1377,7 @@ function Library:create_ui()
                     Body.Text = settings.text or "Description"
                 else
                     Body.RichText = true
-                    Body.Text = settings.richtext or "<font color='rgb(220,20,60)'>Noxware</font> description"
+                    Body.Text = settings.richtext or "<font color='rgb(220,20,60)'>snowcc</font> description"
                 end
                 
                 Body.Size = UDim2.new(1, -10, 0, 20)
@@ -1457,7 +1457,7 @@ function Library:create_ui()
                     Body.Text = settings.text or "Text"
                 else
                     Body.RichText = true
-                    Body.Text = settings.richtext or "<font color='rgb(220,20,60)'>Noxware</font> text"
+                    Body.Text = settings.richtext or "<font color='rgb(220,20,60)'>snowcc</font> text"
                 end
             
                 Body.Size = UDim2.new(1, -10, 1, 0)
@@ -1493,7 +1493,7 @@ function Library:create_ui()
                         Body.Text = new_settings.text or "Text"
                     else
                         Body.RichText = true
-                        Body.Text = new_settings.richtext or "<font color='rgb(220,20,60)'>Noxware</font> text"
+                        Body.Text = new_settings.richtext or "<font color='rgb(220,20,60)'>snowcc</font> text"
                     end
                 end;
             
